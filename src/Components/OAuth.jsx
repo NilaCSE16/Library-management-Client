@@ -4,6 +4,11 @@ import { useDispatch } from "react-redux";
 import { signInSuccess } from "../redux/user/UserSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+
+import logo from "../assets/logo.png";
+
 const OAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,13 +40,16 @@ const OAuth = () => {
     }
   };
   return (
-    <button
-      type="button"
+    <div
+      className="bg-slate-700 text-white rounded-md p-3 uppercase hover:opacity-95 flex justify-center cursor-pointer"
       onClick={handleGoogleClick}
-      className="bg-red-700 text-white rounded-md p-3 uppercase hover:opacity-95"
     >
-      Continue with Google
-    </button>
+      <img src={logo} alt="" className="w-7 h-7 items-center mr-3" />
+      <button type="button">
+        {/* <FontAwesomeIcon icon={faGoogle} className="mr-3 text-xl text-blue-700" /> */}
+        Continue with Google
+      </button>
+    </div>
   );
 };
 
