@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://library-management-server-two.vercel.app/"
+    }
+  ]
+}
