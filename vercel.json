@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://library-management-server-two.vercel.app/"
+      "destination": "https://library-management-server-two.vercel.app/api/(.*)"
     }
   ]
 }
