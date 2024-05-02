@@ -23,13 +23,16 @@ const SignUp = () => {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch("/auth/signup", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+      const res = await fetch(
+        "https://library-management-server-two.vercel.app/auth/signup",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
       const data = await res.json();
       // console.log(data);
       setLoading(false);

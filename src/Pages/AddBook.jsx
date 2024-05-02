@@ -52,7 +52,7 @@ const AddBook = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/api/book/addBook", {
+    fetch("https://library-management-server-two.vercel.app/api/book/addBook", {
       method: "POST",
       headers: {
         "content-type": "application/json",
