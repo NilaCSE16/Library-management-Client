@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://library-management-server-two.vercel.app/",
+        target: "https://library-management-server-two.vercel.app",
         changeOrigin: true,
       },
     },
