@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/proxy/api/(.*)",
-      "destination": "/"
+      "destination": "https://library-management-server-two.vercel.app/*"
     }
   ]
 }
