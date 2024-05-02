@@ -9,7 +9,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
-      await fetch(`/api/auth/signout`);
+      await fetch(
+        `https://library-management-server-two.vercel.app/api/auth/signout`
+      );
       dispatch(signOut());
       navigate("/signIn", { replace: true });
     } catch (error) {
