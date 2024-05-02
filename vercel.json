@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/proxy/(.*)",
+      "destination": "https://library-management-server-two.vercel.app/(.*)"
     }
   ]
 }
