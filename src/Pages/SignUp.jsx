@@ -24,7 +24,7 @@ const SignUp = () => {
       setLoading(true);
       setError(false);
       const res = await fetch(
-        "https://library-management-server-two.vercel.app/auth/signup",
+        "https://library-management-server-two.vercel.app/api/auth/signup",
         {
           method: "POST",
           headers: {
