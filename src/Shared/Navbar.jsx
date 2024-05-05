@@ -9,9 +9,12 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
-      await fetch(`http://localhost:5000/api/auth/signout`, {
-        credentials: "include",
-      });
+      await fetch(
+        `https://library-management-server-two.vercel.app/api/auth/signout`,
+        {
+          credentials: "include",
+        }
+      );
       dispatch(signOut());
       navigate("/signIn", { replace: true });
     } catch (error) {

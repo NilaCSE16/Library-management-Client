@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 const FeaturedBooks = () => {
   const [books, setBooks] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/api/book/viewBookList", {
-      method: "GET",
-    })
+    fetch(
+      "https://library-management-server-two.vercel.app/api/book/viewBookList",
+      {
+        method: "GET",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
