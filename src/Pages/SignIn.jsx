@@ -17,7 +17,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   // console.log(location.state.from);
-  // const server = 'https://library-management-server-two.vercel.app/'
+  // const server = 'http://localhost:5000/'
 
   const handleSignIn = async (event) => {
     event.preventDefault();
@@ -29,19 +29,18 @@ const SignIn = () => {
     try {
       // setLoading(true);
       // setError(false);
+      const absoluteUrl = "http://localhost:5000/api/auth/signin";
       dispatch(signInStart());
-      const res = await fetch(
-        "https://library-management-server-two.vercel.app/api/auth/signin",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(user),
-        }
-      );
+      const res = await fetch(absoluteUrl, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+        credentials: "include",
+      });
       const data = await res.json();
-      // console.log(data);
+      console.log(data);
       // setLoading(false);
       if (data.success == false) {
         // setError(true);

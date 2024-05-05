@@ -4,10 +4,15 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  devServer: {
+    headers: {
+      "Cross-Origin-Embedder-Policy": "unsafe-none",
+    },
+  },
   // server: {
   //   proxy: {
   //     "/api": {
-  //       target: "https://library-management-server-two.vercel.app/",
+  //       target: "http://localhost:5000/",
   //       changeOrigin: true,
   //     },
   //   },
