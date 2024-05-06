@@ -16,6 +16,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Banner from "./Banner";
 import { Link } from "react-router-dom";
+import TopBanner from "./TopBanner";
 
 const Home = () => {
   const { books } = useSelector((state) => state.books);
@@ -27,9 +28,8 @@ const Home = () => {
   const swiperRef = useRef(null);
   return (
     <div className="bg-slate-100">
-      {/* <div> */}
+      <TopBanner></TopBanner>
       <Banner></Banner>
-      {/* </div> */}
       <div
         className="my-10 h-52 bg-cover py-16 bg-center px-16"
         style={{
@@ -109,12 +109,7 @@ const Home = () => {
           </div>
         </div>
         <hr className="my-4" />
-        {/* <div className="my-5 grid grid-cols-5 gap-10 carousel"> */}
-        <Swiper
-          spaceBetween={15} // Optional: Space between slides (in pixels)
-          slidesPerView={5} // Optional: Number of slides to show at once
-          ref={swiperRef}
-        >
+        <Swiper spaceBetween={15} slidesPerView={5} ref={swiperRef}>
           {books?.map((book) => (
             <SwiperSlide key={book._id}>
               <div
