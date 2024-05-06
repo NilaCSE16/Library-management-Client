@@ -2,7 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchBooks = createAsyncThunk("books/fetchBooks", async () => {
-  const res = await axios.get("http://localhost:5000/api/book/viewBookList");
+  const res = await axios.get(
+    "https://library-management-server-two.vercel.app/api/book/viewBookList"
+  );
   // console.log(res)
   return res.data;
 });

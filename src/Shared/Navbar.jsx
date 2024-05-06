@@ -9,10 +9,13 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/signout`, {
-        method: "GET",
-        credentials: "include",
-      });
+      const res = await fetch(
+        `https://library-management-server-two.vercel.app/api/auth/signout`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
       const data = await res.json();
       console.log(data);
       dispatch(signOut());
@@ -40,47 +43,7 @@ const Navbar = () => {
             <li>
               <Link to="/about">About</Link>
             </li>
-            {/* <li>
-              <Link to="/profile">Profile</Link>
-            </li> */}
-            <li>
-              {
-                !currentUser && <Link to="/signIn">Sign In</Link>
-                //   (
-                //   <div className="dropdown dropdown-end">
-                //     <div
-                //       tabIndex={0}
-                //       role="button"
-                //       className="btn btn-ghost btn-circle avatar"
-                //     >
-                //       <div className="w-10 rounded-full">
-                //         <img
-                //           alt="Tailwind CSS Navbar component"
-                //           src={currentUser.profilePicture}
-                //         />
-                //       </div>
-                //     </div>
-                //     <ul
-                //       tabIndex={0}
-                //       className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-                //     >
-                //       <li>
-                //         <Link to="/profile" className="justify-between">
-                //           Profile
-                //           <span className="badge">New</span>
-                //         </Link>
-                //       </li>
-                //       <li>
-                //         <a>Settings</a>
-                //       </li>
-                //       <li>
-                //         <a>Logout</a>
-                //       </li>
-                //     </ul>
-                //   </div>
-                // )
-              }
-            </li>
+            <li>{!currentUser && <Link to="/signIn">Sign In</Link>}</li>
           </ul>
         </div>
         {currentUser && (

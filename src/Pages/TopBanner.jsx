@@ -39,7 +39,7 @@ const TopBanner = () => {
         }}
       >
         {/* <h2>Author Dialog</h2> */}
-        <div className="w-[80%] h-[300px] bg-zinc-400 mb-20 rounded-md opacity-70 flex justify-center items-center">
+        <div className="w-[80%] h-[300px] bg-zinc-300 mb-20 rounded-md opacity-70 flex justify-center items-center">
           <IoIosArrowDropleft
             style={{ fontSize: "8em" }}
             className="cursor-pointer text-zinc-800 pl-7"
