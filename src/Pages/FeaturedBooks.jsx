@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBooks } from "../redux/Books/BooksSlice";
 const FeaturedBooks = () => {
-  const [books, setBooks] = useState(null);
+  const { books } = useSelector((state) => state.books);
+  // console.log(books);
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetch(
-      "https://library-management-server-two.vercel.app/api/book/viewBookList",
-      {
-        method: "GET",
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setBooks(data);
-      });
-  }, []);
+    dispatch(fetchBooks());
+  }, [dispatch]);
   return (
     <div className="mx-5 my-5 grid grid-cols-6 gap-10">
       {books?.map(

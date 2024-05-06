@@ -8,6 +8,7 @@ import Profile from "../Pages/Profile";
 import PrivateRoute from "./PrivateRoute";
 import AddBook from "../Pages/AddBook";
 import Dashboard from "../Pages/Dashboard";
+import { ParallaxProvider } from "react-scroll-parallax";
 // import App from "../App";
 
 const router = createBrowserRouter([
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: (
+          <ParallaxProvider>
+            <Home></Home>
+          </ParallaxProvider>
+        ),
       },
       {
         path: "/about",
