@@ -4,12 +4,9 @@ import { Link } from "react-router-dom";
 const ViewBooks = () => {
   const [books, setBooks] = useState(null);
   useEffect(() => {
-    fetch(
-      "https://library-management-server-two.vercel.app/api/book/viewBookList",
-      {
-        method: "GET",
-      }
-    )
+    fetch("http://localhost:5000/api/book/viewBookList", {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -20,9 +17,9 @@ const ViewBooks = () => {
     <div>
       <div className="overflow-x-auto bg-white p-4 rounded-xl">
         <div className="flex justify-between">
-          <h2 className="text-lg font-semibold">Books List</h2>
+          <h2 className="text-lg font-semibold text-orange-600">Books List</h2>
           <Link to="/addBook">
-            <button className="px-3 py-2 text-sm rounded-btn border border-solid border-slate-500">
+            <button className="px-3 py-2 text-sm text-orange-600 rounded-btn border border-solid border-orange-600">
               Add New Book
             </button>
           </Link>

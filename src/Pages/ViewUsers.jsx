@@ -9,7 +9,7 @@ const ViewUsers = () => {
   var id = 1100;
   const [users, setUsers] = useState(null);
   useEffect(() => {
-    fetch("https://library-management-server-two.vercel.app/api/user", {
+    fetch("http://localhost:5000/api/user", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -21,9 +21,9 @@ const ViewUsers = () => {
   return (
     <div className="overflow-x-auto bg-white p-4 rounded-xl">
       <div className="flex justify-between">
-        <h2 className="font-semibold text-lg">Users List</h2>
+        <h2 className="font-semibold text-lg text-orange-600">Users List</h2>
         <Link to="/signUp">
-          <button className="px-3 py-2 rounded-btn border border-solid border-slate-500 text-sm">
+          <button className="px-3 py-2 rounded-btn text-orange-600 border border-solid border-orange-600 text-sm">
             Add New User
           </button>
         </Link>

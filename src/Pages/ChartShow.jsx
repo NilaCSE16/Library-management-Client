@@ -65,7 +65,7 @@ const ChartShow = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Borrowers" fill="#86020B" />
+        <Bar dataKey="Borrowers" fill="#EA580C" />
         <Bar dataKey="Visitors" fill="#363B3E" />
       </BarChart>
     </div>
