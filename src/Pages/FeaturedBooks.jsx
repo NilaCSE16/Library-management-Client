@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const FeaturedBooks = ({ book }) => {
   const { bookCover, bookTitle, bookAuthor } = book;
@@ -36,7 +36,23 @@ const FeaturedBooks = ({ book }) => {
         >
           {bookAuthor}
         </p>
-        {location.pathname == "/viewBook" && <p>Price: $25.75</p>}
+        {location.pathname == "/viewBook" && (
+          <div>
+            <p>Price: $25.75</p>
+            <div className="flex justify-between">
+              <Link to="/bookDetails" state={{ book: book }}>
+                <button className="border mt-2 text-[12px] hover:text-white  border-zinc-500 px-2 py-1 rounded-md mr-4 text-orange-600 hover:bg-orange-600">
+                  Read More
+                </button>
+              </Link>
+              <Link to="/about">
+                <button className="border mt-2 text-[12px] hover:text-white  border-zinc-500 px-2 py-1 rounded-md mr-4 text-orange-600 hover:bg-orange-600">
+                  Borrow Now
+                </button>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

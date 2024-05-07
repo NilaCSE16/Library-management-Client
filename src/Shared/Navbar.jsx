@@ -1,21 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signOut } from "../redux/user/UserSlice";
 
 const Navbar = () => {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const location = useLocation();
+  // console.log(location.pathname);
   // console.log(!currentUser);
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
-      const res = await fetch(
-        `https://library-management-server-two.vercel.app/api/auth/signout`,
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`http://localhost:5000/api/auth/signout`, {
+        method: "GET",
+        credentials: "include",
+      });
       const data = await res.json();
       console.log(data);
       dispatch(signOut());
@@ -33,15 +32,61 @@ const Navbar = () => {
       </div>
       <div className="flex-none gap-2">
         <div className="flex-none">
-          <ul className="menu menu-horizontal px-1 font-semibold">
-            <li>
+          <ul className="menu-horizontal px-1 font-semibold gap-10">
+            <li
+              className={
+                location.pathname == "/"
+                  ? "text-orange-600 mt-1"
+                  : "hover:text-orange-600 mt-1"
+              }
+            >
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li
+              className={
+                location.pathname == "/viewBook"
+                  ? "text-orange-600 mt-1"
+                  : "hover:text-orange-600 mt-1"
+              }
+            >
               <Link to="/viewBook">Book Collections</Link>
             </li>
-            <li>
+            <li
+              className={
+                location.pathname == "/about"
+                  ? "text-orange-600 mt-1"
+                  : "hover:text-orange-600 mt-1"
+              }
+            >
               <Link to="/about">About</Link>
+            </li>
+            <li>
+              <form method="GET">
+                <div className="relative text-gray-600 focus-within:text-gray-400">
+                  <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+                    <button type="submit" className="p-1 focus:outline-none">
+                      <svg
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        className="w-6 h-6"
+                      >
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                      </svg>
+                    </button>
+                  </span>
+                  <input
+                    type="search"
+                    name="q"
+                    className="py-2 text-sm text-white border border-gray-400 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
+                    placeholder="Search..."
+                    autoComplete="off"
+                  ></input>
+                </div>
+              </form>
             </li>
             <li>{!currentUser && <Link to="/signIn">Sign In</Link>}</li>
           </ul>

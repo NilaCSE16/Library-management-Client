@@ -20,21 +20,18 @@ const OAuth = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       //   console.log(result);
-      const res = await fetch(
-        "https://library-management-server-two.vercel.app/api/auth/google",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            name: result.user.displayName,
-            email: result.user.email,
-            photo: result.user.photoURL,
-          }),
-          credentials: "include",
-        }
-      );
+      const res = await fetch("http://localhost:5000/api/auth/google", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name: result.user.displayName,
+          email: result.user.email,
+          photo: result.user.photoURL,
+        }),
+        credentials: "include",
+      });
       const data = await res.json();
       // console.log(data);
       dispatch(signInSuccess(data));

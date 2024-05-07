@@ -10,6 +10,7 @@ import AddBook from "../Pages/AddBook";
 import Dashboard from "../Pages/Dashboard";
 import { ParallaxProvider } from "react-scroll-parallax";
 import ViewAllBooks from "../Pages/ViewAllBooks";
+import BookDetails from "../Pages/BookDetails";
 // import App from "../App";
 
 const router = createBrowserRouter([
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/viewBook",
         element: <ViewAllBooks></ViewAllBooks>,
+      },
+      {
+        path: "/bookDetails",
+        element: <BookDetails></BookDetails>,
       },
     ],
   },

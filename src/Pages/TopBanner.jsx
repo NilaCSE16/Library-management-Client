@@ -9,11 +9,25 @@ import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { useRef } from "react";
+import { Pagination, Mousewheel, Keyboard, Autoplay } from "swiper/modules";
+// import { Autoplay } from "swiper/modules";
 
 const TopBanner = () => {
+  // Swiper.use(Autoplay);
   const swiperRef = useRef(null);
   const images = [
+    {
+      image: profile,
+      description:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here,",
+    },
+    {
+      image: profile,
+      description:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here,",
+    },
     {
       image: profile,
       description:
@@ -38,14 +52,23 @@ const TopBanner = () => {
           backgroundImage: `url(${top})`,
         }}
       >
-        {/* <h2>Author Dialog</h2> */}
         <div className="w-[80%] h-[300px] bg-zinc-300 mb-20 rounded-md opacity-70 flex justify-center items-center">
           <IoIosArrowDropleft
             style={{ fontSize: "8em" }}
             className="cursor-pointer text-zinc-800 pl-7"
             onClick={() => swiperRef.current.swiper.slidePrev()}
           />
-          <Swiper spaceBetween={15} slidesPerView={1} ref={swiperRef}>
+          <Swiper
+            cssMode={true}
+            slidesPerView={1}
+            ref={swiperRef}
+            pagination={true}
+            mousewheel={true}
+            keyboard={true}
+            autoplay={{ delay: 2000 }}
+            modules={[Pagination, Mousewheel, Keyboard, Autoplay]}
+            className="mySwiper"
+          >
             {images?.map((image, index) => (
               <SwiperSlide key={index}>
                 <div className="mx-40">
