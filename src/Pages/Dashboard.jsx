@@ -74,6 +74,9 @@ const Dashboard = () => {
         <ViewUsers></ViewUsers>
         <ViewBooks></ViewBooks>
       </div>
+      <div className="my-10 grid grid-cols-2 gap-6">
+        <ChartShow />
+      </div>
       <div className="mt-8">
         <h2 className="font-semibold text-lg mx-2">Top Choices</h2>
         <div className="mx-5 my-5 grid grid-cols-6 gap-10">
@@ -85,9 +88,6 @@ const Dashboard = () => {
           )}
         </div>
         {/* <FeaturedBooks></FeaturedBooks> */}
-      </div>
-      <div className="my-10 grid grid-cols-2 gap-6">
-        <ChartShow />
       </div>
     </div>
   );

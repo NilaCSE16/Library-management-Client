@@ -11,10 +11,13 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/signout`, {
-        method: "GET",
-        credentials: "include",
-      });
+      const res = await fetch(
+        `https://library-management-server-two.vercel.app/api/auth/signout`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
       const data = await res.json();
       console.log(data);
       dispatch(signOut());
@@ -29,7 +32,7 @@ const Navbar = () => {
     const author = event.target.bar.value;
     // console.log(author);
     const res = await fetch(
-      `http://localhost:5000/api/book/bookWithWriter/${author}`
+      `https://library-management-server-two.vercel.app/api/book/bookWithWriter/${author}`
     );
     const data = await res.json();
     // console.log(data);

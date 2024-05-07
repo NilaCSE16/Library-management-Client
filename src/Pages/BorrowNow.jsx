@@ -51,13 +51,16 @@ const BorrowNow = () => {
       returnDate,
     };
     // console.log(borrowInfo);
-    const res = await fetch("http://localhost:5000/api/borrow/borrowBook", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(borrowInfo),
-    });
+    const res = await fetch(
+      "https://library-management-server-two.vercel.app/api/borrow/borrowBook",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(borrowInfo),
+      }
+    );
     const data = await res.json();
     console.log(data);
   };

@@ -8,7 +8,7 @@ const MyBorrowList = () => {
   const [myBorrowLists, setMyBorrowLists] = useState(null);
   useEffect(() => {
     fetch(
-      `http://localhost:5000/api/borrow/myBorrowList/${currentUser.username}`
+      `https://library-management-server-two.vercel.app/api/borrow/myBorrowList/${currentUser.username}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -19,7 +19,7 @@ const MyBorrowList = () => {
 
   const handleReturn = async (bookId, userName) => {
     const url = new URL(
-      "http://localhost:5000/api/borrow/deleteFromBorrow",
+      "https://library-management-server-two.vercel.app/api/borrow/deleteFromBorrow",
       window.location.origin
     );
     url.searchParams.append("bookId", bookId);
