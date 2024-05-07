@@ -11,13 +11,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
-      const res = await fetch(
-        `https://library-management-server-two.vercel.app/api/auth/signout`,
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const res = await fetch(`http://localhost:5000/api/auth/signout`, {
+        method: "GET",
+        credentials: "include",
+      });
       const data = await res.json();
       console.log(data);
       dispatch(signOut());
@@ -25,6 +22,18 @@ const Navbar = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const author = event.target.bar.value;
+    // console.log(author);
+    const res = await fetch(
+      `http://localhost:5000/api/book/bookWithWriter/${author}`
+    );
+    const data = await res.json();
+    // console.log(data);
+    navigate("/search", { state: { books: data } });
   };
   return (
     <div className="navbar bg-slate-100 px-20">
@@ -75,7 +84,7 @@ const Navbar = () => {
               </li>
             )}
             <li>
-              <form method="GET">
+              <form onSubmit={handleSubmit}>
                 <div className="relative text-gray-600 focus-within:text-gray-400">
                   <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                     <button type="submit" className="p-1 focus:outline-none">
@@ -94,9 +103,9 @@ const Navbar = () => {
                   </span>
                   <input
                     type="search"
-                    name="q"
+                    name="bar"
                     className="py-2 text-sm text-white border border-gray-400 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
-                    placeholder="Search..."
+                    placeholder="Author Name..."
                     autoComplete="off"
                   ></input>
                 </div>

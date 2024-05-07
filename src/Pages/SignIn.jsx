@@ -15,7 +15,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   // console.log(location.state.from);
-  // const server = 'https://library-management-server-two.vercel.app/'
+  // const server = 'http://localhost:5000/'
 
   const handleSignIn = async (event) => {
     event.preventDefault();
@@ -25,8 +25,7 @@ const SignIn = () => {
     const user = { email, password };
     // setFormData(user);
     try {
-      const absoluteUrl =
-        "https://library-management-server-two.vercel.app/api/auth/signin";
+      const absoluteUrl = "http://localhost:5000/api/auth/signin";
       dispatch(signInStart());
       const res = await fetch(absoluteUrl, {
         method: "POST",

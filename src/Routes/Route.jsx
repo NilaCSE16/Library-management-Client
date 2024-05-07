@@ -13,6 +13,7 @@ import ViewAllBooks from "../Pages/ViewAllBooks";
 import BookDetails from "../Pages/BookDetails";
 import BorrowNow from "../Pages/BorrowNow";
 import MyBorrowList from "../Pages/MyBorrowList";
+import SearchBook from "../Pages/SearchBook";
 // import App from "../App";
 
 const router = createBrowserRouter([
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/myList",
         element: <MyBorrowList></MyBorrowList>,
+      },
+      {
+        path: "/search",
+        element: <SearchBook></SearchBook>,
       },
     ],
   },
