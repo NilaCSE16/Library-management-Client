@@ -35,7 +35,7 @@ const BookDetails = () => {
         <p>
           <span className="font-bold">Available:</span> {bookAvailable}
         </p>
-        <Link to="/about">
+        <Link to="/borrow" state={{ book: location.state.book }}>
           <button className="border mt-2 hover:bg-orange-400 border-zinc-500 px-6 py-2 rounded-md mr-4 text-white bg-orange-600">
             Borrow Now
           </button>

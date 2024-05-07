@@ -45,7 +45,7 @@ const FeaturedBooks = ({ book }) => {
                   Read More
                 </button>
               </Link>
-              <Link to="/about">
+              <Link to="/borrow" state={{ book: book }}>
                 <button className="border mt-2 text-[12px] hover:text-white  border-zinc-500 px-2 py-1 rounded-md mr-4 text-orange-600 hover:bg-orange-600">
                   Borrow Now
                 </button>

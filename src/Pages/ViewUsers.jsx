@@ -9,7 +9,7 @@ const ViewUsers = () => {
   var id = 1100;
   const [users, setUsers] = useState(null);
   useEffect(() => {
-    fetch("https://library-management-server-two.vercel.app/api/user", {
+    fetch("http://localhost:5000/api/user", {
       method: "GET",
     })
       .then((res) => res.json())

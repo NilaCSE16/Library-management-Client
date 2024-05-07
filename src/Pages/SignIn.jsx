@@ -9,15 +9,13 @@ import {
 import OAuth from "../Components/OAuth";
 
 const SignIn = () => {
-  // const [error, setError] = useState(false);
-  // const [loading, setLoading] = useState(false);
   const { loading, error } = useSelector((state) => state.user);
   console.log(error);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
   // console.log(location.state.from);
-  // const server = 'https://library-management-server-two.vercel.app/'
+  // const server = 'http://localhost:5000/'
 
   const handleSignIn = async (event) => {
     event.preventDefault();
@@ -27,10 +25,7 @@ const SignIn = () => {
     const user = { email, password };
     // setFormData(user);
     try {
-      // setLoading(true);
-      // setError(false);
-      const absoluteUrl =
-        "https://library-management-server-two.vercel.app/api/auth/signin";
+      const absoluteUrl = "http://localhost:5000/api/auth/signin";
       dispatch(signInStart());
       const res = await fetch(absoluteUrl, {
         method: "POST",
@@ -41,8 +36,6 @@ const SignIn = () => {
         credentials: "include",
       });
       const data = await res.json();
-      // console.log(data);
-      // setLoading(false);
       if (data.success == false) {
         // setError(true);
         dispatch(signInFailure(data));
@@ -51,13 +44,8 @@ const SignIn = () => {
       dispatch(signInSuccess(data));
       navigate(location.state ? location.state?.from : "/", { replace: true });
     } catch (error) {
-      // setLoading(false);
-      // setError(true);
       dispatch(signInFailure(error));
     }
-
-    // console.log(data);
-    // const data = await res.json();
   };
   return (
     <div className="hero p-20 bg-base-200">

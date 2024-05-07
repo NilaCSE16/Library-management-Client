@@ -4,12 +4,9 @@ import { Link } from "react-router-dom";
 const ViewBooks = () => {
   const [books, setBooks] = useState(null);
   useEffect(() => {
-    fetch(
-      "https://library-management-server-two.vercel.app/api/book/viewBookList",
-      {
-        method: "GET",
-      }
-    )
+    fetch("http://localhost:5000/api/book/viewBookList", {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
