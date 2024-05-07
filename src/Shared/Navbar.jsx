@@ -66,7 +66,7 @@ const Navbar = () => {
             {currentUser && (
               <li
                 className={
-                  location.pathname == "/about"
+                  location.pathname == "/myList"
                     ? "text-orange-600 mt-1"
                     : "hover:text-orange-600 mt-1"
                 }
