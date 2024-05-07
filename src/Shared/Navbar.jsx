@@ -60,6 +60,17 @@ const Navbar = () => {
             >
               <Link to="/about">About</Link>
             </li>
+            {currentUser && (
+              <li
+                className={
+                  location.pathname == "/about"
+                    ? "text-orange-600 mt-1"
+                    : "hover:text-orange-600 mt-1"
+                }
+              >
+                <Link to="/myList">My Borrow List</Link>
+              </li>
+            )}
             <li>
               <form method="GET">
                 <div className="relative text-gray-600 focus-within:text-gray-400">

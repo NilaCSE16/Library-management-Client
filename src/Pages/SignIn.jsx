@@ -10,7 +10,7 @@ import OAuth from "../Components/OAuth";
 
 const SignIn = () => {
   const { loading, error } = useSelector((state) => state.user);
-  console.log(error);
+  // console.log(error);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();

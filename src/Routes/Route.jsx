@@ -12,6 +12,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import ViewAllBooks from "../Pages/ViewAllBooks";
 import BookDetails from "../Pages/BookDetails";
 import BorrowNow from "../Pages/BorrowNow";
+import MyBorrowList from "../Pages/MyBorrowList";
 // import App from "../App";
 
 const router = createBrowserRouter([
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/borrow",
         element: <BorrowNow></BorrowNow>,
+      },
+      {
+        path: "/myList",
+        element: <MyBorrowList></MyBorrowList>,
       },
     ],
   },
