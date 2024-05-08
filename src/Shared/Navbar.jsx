@@ -147,11 +147,13 @@ const Navbar = () => {
                   <span className="badge">New</span>
                 </Link>
               </li>
-              <li>
-                <Link to="/addBook" className="justify-between">
-                  Add new book
-                </Link>
-              </li>
+              {currentUser.role === "Admin" && (
+                <li>
+                  <Link to="/addBook" className="justify-between">
+                    Add new book
+                  </Link>
+                </li>
+              )}
               <li onClick={handleSignOut}>
                 <a>Logout</a>
               </li>
