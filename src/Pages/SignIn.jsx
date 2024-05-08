@@ -43,7 +43,16 @@ const SignIn = () => {
         return;
       }
       dispatch(signInSuccess(data));
-      navigate(location.state ? location.state?.from : "/", { replace: true });
+      // console.log(data.role);
+      if (data.role === "Admin") {
+        navigate(location.state ? location.state?.from : "/dashboard", {
+          replace: true,
+        });
+      } else {
+        navigate(location.state ? location.state?.from : "/", {
+          replace: true,
+        });
+      }
     } catch (error) {
       dispatch(signInFailure(error));
     }

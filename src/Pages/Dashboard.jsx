@@ -10,6 +10,7 @@ import { MdOutlinePersonAddAlt1 } from "react-icons/md";
 import { GiSpellBook } from "react-icons/gi";
 import { LuBookX } from "react-icons/lu";
 import CountUp from "react-countup";
+import IssuedBooks from "./IssuedBooks";
 
 const Dashboard = () => {
   const { books } = useSelector((state) => state.books);
@@ -76,6 +77,7 @@ const Dashboard = () => {
       </div>
       <div className="my-10 grid grid-cols-2 gap-6">
         <ChartShow />
+        <IssuedBooks></IssuedBooks>
       </div>
       <div className="mt-8">
         <h2 className="font-semibold text-lg mx-2">Top Choices</h2>

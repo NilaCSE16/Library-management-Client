@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import top from "../assets/topbanner.jpg";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const BorrowNow = () => {
@@ -10,8 +10,9 @@ const BorrowNow = () => {
   //   const [formData, setFormData] = useState(null);
   //   console.log(formData);
 
-  const location = useLocation();
-  const book = location?.state.book;
+  // const location = useLocation();
+  // const book = location?.state.book;
+  const book = JSON.parse(localStorage.getItem("book"));
 
   const { bookId, bookTitle, bookAuthor } = book;
 

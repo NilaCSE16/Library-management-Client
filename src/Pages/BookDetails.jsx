@@ -1,11 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import top from "../assets/topbanner.jpg";
 
 const BookDetails = () => {
-  const location = useLocation();
-  //   console.log(location.state.book);
-  const { bookTitle, bookCover, bookSummary, bookAvailable, bookAuthor } =
-    location.state.book;
+  // const location = useLocation();
+  // console.log(location);
+  const book = JSON.parse(localStorage.getItem("book"));
+  // console.log(book);
+
+  const { bookTitle, bookCover, bookSummary, bookAvailable, bookAuthor } = book;
+  // localStorage.removeItem("book");
   return (
     <div className="mb-16">
       <div
@@ -35,7 +38,7 @@ const BookDetails = () => {
         <p>
           <span className="font-bold">Available:</span> {bookAvailable}
         </p>
-        <Link to="/borrow" state={{ book: location.state.book }}>
+        <Link to="/borrow">
           <button className="border mt-2 hover:bg-orange-400 border-zinc-500 px-6 py-2 rounded-md mr-4 text-white bg-orange-600">
             Borrow Now
           </button>

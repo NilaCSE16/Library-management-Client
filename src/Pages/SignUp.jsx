@@ -8,6 +8,9 @@ const SignUp = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  // const [name, setName] = useState("");
+  const [userType, setUserType] = useState("");
+  const [secretKey, setSecretKey] = useState(null);
   // const location = useLocation();
 
   const handleSignUp = async (event) => {
@@ -17,33 +20,39 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const department = form.department.value;
-    const user = { username, email, department, password };
-    // console.log(user);
-    // setFormData(user);
-    try {
-      setLoading(true);
-      setError(false);
-      const res = await fetch(
-        "https://library-management-server-two.vercel.app/api/auth/signup",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(user),
+    // const secretKey = form.secretKey.value;
+    // const userType = form.userType.value;
+    if (userType === "Admin" && secretKey !== "admin@123") {
+      alert("Invalid Admin");
+    } else {
+      const user = { username, email, department, password, userType };
+      // console.log(user);
+      // setFormData(user);
+      try {
+        setLoading(true);
+        setError(false);
+        const res = await fetch(
+          "https://library-management-server-two.vercel.app/api/auth/signup",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+          }
+        );
+        const data = await res.json();
+        // console.log(data);
+        setLoading(false);
+        if (data.success == false) {
+          setError(true);
+          return;
         }
-      );
-      const data = await res.json();
-      // console.log(data);
-      setLoading(false);
-      if (data.success == false) {
+        navigate("/signIn", { replace: true });
+      } catch (error) {
+        setLoading(false);
         setError(true);
-        return;
       }
-      navigate("/signIn", { replace: true });
-    } catch (error) {
-      setLoading(false);
-      setError(true);
     }
 
     // console.log(data);
@@ -57,6 +66,44 @@ const SignUp = () => {
           <h2 className="text-3xl text-center font-semibold mt-7">Sign Up </h2>
         </div>
         <form className="card-body" onSubmit={handleSignUp}>
+          <div className="grid grid-cols-3">
+            <p>Register as: </p>
+            <div>
+              <input
+                type="radio"
+                name="userType"
+                value="User"
+                className="cursor-pointer"
+                onChange={(e) => setUserType(e.target.value)}
+              />{" "}
+              User
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="userType"
+                value="Admin"
+                className="cursor-pointer"
+                onChange={(e) => setUserType(e.target.value)}
+              />
+              Admin
+            </div>
+          </div>
+          {userType == "Admin" && (
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Secret Key</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Secret Key"
+                className="input input-bordered"
+                name="secretKey"
+                onChange={(e) => setSecretKey(e.target.value)}
+                // required
+              />
+            </div>
+          )}
           <div className="form-control">
             <label className="label">
               <span className="label-text">Username</span>

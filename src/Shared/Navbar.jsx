@@ -7,7 +7,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   // console.log(location.pathname);
-  // console.log(!currentUser);
+  // console.log(currentUser);
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
@@ -22,6 +22,7 @@ const Navbar = () => {
       console.log(data);
       dispatch(signOut());
       navigate("/signIn", { replace: true });
+      localStorage.removeItem("book");
     } catch (error) {
       console.log(error);
     }
@@ -75,7 +76,7 @@ const Navbar = () => {
             >
               <Link to="/about">About</Link>
             </li>
-            {currentUser && (
+            {currentUser && currentUser.role !== "Admin" && (
               <li
                 className={
                   location.pathname == "/myList"
@@ -135,11 +136,11 @@ const Navbar = () => {
               tabIndex={0}
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
-              <li>
+              {/* <li>
                 <Link to="/dashboard" className="justify-between">
                   Dashboard
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/profile" className="justify-between">
                   Profile

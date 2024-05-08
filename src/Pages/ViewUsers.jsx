@@ -15,7 +15,8 @@ const ViewUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
-        setUsers(data);
+        const user = data.filter((u) => u.role !== "Admin");
+        setUsers(user);
       });
   }, []);
   return (
@@ -61,7 +62,9 @@ const ViewUsers = () => {
               <td>12</td>
               <td>{user.department}</td>
               <th>
-                <button className="btn btn-ghost btn-xs">Delete</button>
+                <button className="btn bg-orange-600 btn-xs text-white">
+                  Make Admin
+                </button>
               </th>
             </tr>
           ))}

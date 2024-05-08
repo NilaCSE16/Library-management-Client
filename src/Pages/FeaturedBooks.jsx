@@ -4,6 +4,10 @@ const FeaturedBooks = ({ book }) => {
   const { bookCover, bookTitle, bookAuthor } = book;
   const location = useLocation();
   // console.log(location.pathname);
+
+  const handleView = (book) => {
+    localStorage.setItem("book", JSON.stringify(book));
+  };
   return (
     <div
       className={
@@ -40,12 +44,16 @@ const FeaturedBooks = ({ book }) => {
           <div>
             <p>Price: $25.75</p>
             <div className="flex justify-between">
-              <Link to="/bookDetails" state={{ book: book }}>
+              <Link
+                to="/bookDetails"
+                state={{ book: book }}
+                onClick={() => handleView(book)}
+              >
                 <button className="border mt-2 text-[12px] hover:text-white  border-zinc-500 px-2 py-1 rounded-md mr-4 text-orange-600 hover:bg-orange-600">
                   Read More
                 </button>
               </Link>
-              <Link to="/borrow" state={{ book: book }}>
+              <Link to="/borrow" onClick={() => handleView(book)}>
                 <button className="border mt-2 text-[12px] hover:text-white  border-zinc-500 px-2 py-1 rounded-md mr-4 text-orange-600 hover:bg-orange-600">
                   Borrow Now
                 </button>
